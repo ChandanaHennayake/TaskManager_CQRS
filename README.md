@@ -337,15 +337,11 @@ dotnet test
 
 ## Test Execution
 
-![Unit Test Result](Images/test-result-1.JPG)
+![Unit Test Result](Images/testresult.JPG)
 
 ---
 
-## Test Summary
 
-![Test Summary](Images/test-result-2.JPG)
-
----
 
 # 🏛 Architecture
 
@@ -394,4 +390,4 @@ This project was developed as a technical assessment and learning project.
 
 Software Engineer
 
-GitHub: https://github.com/YOUR_GITHUB_USERNAME
+GitHub: https://github.com/ChandanaHennayake/TaskManager_CQRS
