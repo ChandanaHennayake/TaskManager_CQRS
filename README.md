@@ -337,15 +337,11 @@ dotnet test
 
 ## Test Execution
 
-![Unit Test Result](Images/test-result-1.JPG)
+![Unit Test Result](Images/testresult.JPG)
 
 ---
 
-## Test Summary
 
-![Test Summary](Images/test-result-2.JPG)
-
----
 
 # 🏛 Architecture
 
