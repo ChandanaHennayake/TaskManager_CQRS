@@ -1,0 +1,619 @@
+// ============================================
+// Colors
+// ============================================
+
+$primary: #5b52e8;
+$primary-hover: #483fe0;
+
+$success: #16a34a;
+$danger: #dc2626;
+
+$background: #f7f8fc;
+$surface: #ffffff;
+
+$text: #1f2937;
+$text-secondary: #6b7280;
+
+$border: #e5e7eb;
+
+// ============================================
+// Page
+// ============================================
+
+.task-page {
+
+  padding: 2rem;
+
+  animation: fadeIn .25s ease;
+
+}
+
+// ============================================
+// Header
+// ============================================
+
+.task-page__header{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:2rem;
+
+}
+
+.task-page__title{
+
+  margin:0;
+
+  font-size:2rem;
+
+  font-weight:700;
+
+  color:$text;
+
+}
+
+.task-page__sub{
+
+  margin-top:.35rem;
+
+  color:$text-secondary;
+
+}
+
+// ============================================
+// Buttons
+// ============================================
+
+.btn-back{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  padding:12px 18px;
+
+  border:1px solid $border;
+
+  border-radius:12px;
+
+  background:white;
+
+  color:$text;
+
+  text-decoration:none;
+
+  transition:.2s;
+
+}
+
+.btn-back:hover{
+
+  background:#f3f4f6;
+
+  color:$text;
+
+}
+
+.btn-primary-action{
+
+  display:inline-flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  gap:8px;
+
+  min-width:170px;
+
+  height:48px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:$primary;
+
+  color:white;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.2s;
+
+}
+
+.btn-primary-action:hover:not(:disabled){
+
+  background:$primary-hover;
+
+  transform:translateY(-2px);
+
+}
+
+.btn-primary-action:disabled{
+
+  opacity:.7;
+
+  cursor:not-allowed;
+
+}
+
+.btn-cancel{
+
+  display:inline-flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  height:48px;
+
+  padding:0 20px;
+
+  border:1px solid $border;
+
+  border-radius:12px;
+
+  background:white;
+
+  color:$text;
+
+  text-decoration:none;
+
+  transition:.2s;
+
+}
+
+.btn-cancel:hover{
+
+  background:#f3f4f6;
+
+  color:$text;
+
+}
+
+// ============================================
+// Card
+// ============================================
+
+.form-card{
+
+  max-width:760px;
+
+  margin:auto;
+
+  background:$surface;
+
+  border:1px solid $border;
+
+  border-radius:18px;
+
+  padding:32px;
+
+  box-shadow:0 12px 35px rgba(0,0,0,.05);
+
+}
+
+// ============================================
+// Form Fields
+// ============================================
+
+.form-field{
+
+  margin-bottom:1.75rem;
+
+}
+
+.form-field__label{
+
+  display:block;
+
+  margin-bottom:8px;
+
+  font-size:.9rem;
+
+  font-weight:600;
+
+  color:$text;
+
+}
+
+// ============================================
+// Inputs
+// ============================================
+
+.form-field__input{
+
+  width:100%;
+
+  height:48px;
+
+  padding:0 16px;
+
+  border:1px solid $border;
+
+  border-radius:12px;
+
+  background:#fafafa;
+
+  color:$text;
+
+  font-size:.95rem;
+
+  transition:.2s;
+
+}
+
+.form-field__input::placeholder{
+
+  color:#9ca3af;
+
+}
+
+.form-field__input:hover{
+
+  border-color:#d1d5db;
+
+}
+
+.form-field__input:focus{
+
+  outline:none;
+
+  background:white;
+
+  border-color:$primary;
+
+  box-shadow:0 0 0 4px rgba($primary,.12);
+
+}
+
+// ============================================
+// Textarea
+// ============================================
+
+.form-field__input--textarea{
+
+  height:auto;
+
+  min-height:130px;
+
+  padding:14px 16px;
+
+  resize:vertical;
+
+  line-height:1.6;
+
+}
+
+// ============================================
+// Select
+// ============================================
+
+.form-field__select-wrap{
+
+  position:relative;
+
+}
+
+.form-field__input--select{
+
+  appearance:none;
+
+  cursor:pointer;
+
+  padding-right:46px;
+
+}
+
+.form-field__select-icon{
+
+  position:absolute;
+
+  right:16px;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#9ca3af;
+
+  pointer-events:none;
+
+  transition:.2s;
+
+}
+
+.form-field__select-wrap:hover
+.form-field__select-icon{
+
+  color:$primary;
+
+}
+
+// ============================================
+// Error State
+// ============================================
+
+.form-field__input--error{
+
+  border-color:#fecaca;
+
+  background:#fef2f2;
+
+}
+
+.form-field__input--error:focus{
+
+  border-color:$danger;
+
+  box-shadow:0 0 0 4px rgba($danger,.12);
+
+}
+
+// ============================================
+// Validation Message
+// ============================================
+
+.form-field__error{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin-top:8px;
+
+  color:$danger;
+
+  font-size:.82rem;
+
+}
+
+.form-field__error i{
+
+  font-size:.9rem;
+
+}
+
+// ============================================
+// Character Counter
+// ============================================
+
+.field-meta{
+
+  margin-top:6px;
+
+  text-align:right;
+
+  font-size:.75rem;
+
+  color:#9ca3af;
+
+}
+
+// ============================================
+// Helper Text
+// ============================================
+
+.field-help{
+
+  margin-top:6px;
+
+  color:$text-secondary;
+
+  font-size:.8rem;
+
+}
+
+// ============================================
+// Spinner
+// ============================================
+
+.spinner-border-sm{
+
+  width:1rem;
+
+  height:1rem;
+
+  border-width:2px;
+
+}// ============================================
+// Form Actions
+// ============================================
+
+.form-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 2rem;
+
+  padding-top: 2rem;
+
+  border-top: 1px solid $border;
+
+}
+
+// ============================================
+// Button Animation
+// ============================================
+
+.btn-primary-action,
+.btn-back,
+.btn-cancel {
+
+  transition:
+    background .2s,
+    border-color .2s,
+    color .2s,
+    transform .2s,
+    box-shadow .2s;
+
+}
+
+.btn-primary-action:hover:not(:disabled) {
+
+  box-shadow: 0 10px 24px rgba($primary,.25);
+
+}
+
+.btn-back:hover,
+.btn-cancel:hover {
+
+  box-shadow: 0 6px 16px rgba(0,0,0,.05);
+
+}
+
+// ============================================
+// Card Animation
+// ============================================
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(18px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+// ============================================
+// Responsive
+// ============================================
+
+@media (max-width:992px){
+
+  .task-page{
+
+    padding:1.5rem;
+
+  }
+
+}
+
+@media (max-width:768px){
+
+  .task-page__header{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+  }
+
+  .task-page__title{
+
+    font-size:1.7rem;
+
+  }
+
+  .form-card{
+
+    padding:24px;
+
+  }
+
+  .form-actions{
+
+    flex-direction:column-reverse;
+
+    align-items:stretch;
+
+  }
+
+  .btn-primary-action,
+  .btn-cancel{
+
+    width:100%;
+
+  }
+
+}
+
+@media (max-width:576px){
+
+  .task-page{
+
+    padding:1rem;
+
+  }
+
+  .form-card{
+
+    padding:20px;
+
+    border-radius:14px;
+
+  }
+
+  .task-page__title{
+
+    font-size:1.5rem;
+
+  }
+
+  .task-page__sub{
+
+    font-size:.9rem;
+
+  }
+
+  .form-field{
+
+    margin-bottom:1.4rem;
+
+  }
+
+}
+
+// ============================================
+// Optional nice scrollbar
+// ============================================
+
+textarea::-webkit-scrollbar{
+
+  width:8px;
+
+}
+
+textarea::-webkit-scrollbar-thumb{
+
+  background:#d1d5db;
+
+  border-radius:999px;
+
+}
+
+textarea::-webkit-scrollbar-thumb:hover{
+
+  background:#9ca3af;
+
+}

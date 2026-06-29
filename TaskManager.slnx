@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="TaskManager.Api/TaskManager.Api.csproj" />
+  <Project Path="TaskManager.Application/TaskManager.Application.csproj" />
+  <Project Path="TaskManager.Domain/TaskManager.Domain.csproj" />
+  <Project Path="TaskManager.Infrastructure/TaskManager.Infrastructure.csproj" />
+  <Project Path="TaskManager.Test/TaskManager.Test.csproj" Id="fbaf713f-77aa-4333-8853-e2cb623b41aa" />
+</Solution>

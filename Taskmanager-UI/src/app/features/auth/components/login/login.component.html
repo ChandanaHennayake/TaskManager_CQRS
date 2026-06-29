@@ -1,0 +1,232 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <!-- Logo -->
+    <div class="auth-header">
+      <div class="logo">
+        <span>TM</span>
+      </div>
+
+      <h2>{{ isLoginMode ? 'Welcome Back' : 'Create Account' }}</h2>
+
+      <p>
+        {{ isLoginMode
+        ? 'Sign in to continue managing your tasks.'
+        : 'Create an account to get started.' }}
+      </p>
+    </div>
+
+    <!-- Alerts -->
+    <div *ngIf="message" class="alert alert-success">
+      {{ message }}
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- LOGIN -->
+    <form
+      *ngIf="isLoginMode"
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+      novalidate>
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Username
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter username"
+          formControlName="username">
+
+        <small
+          class="text-danger"
+          *ngIf="loginForm.controls.username.touched &&
+                 loginForm.controls.username.invalid">
+
+          Username is required.
+
+        </small>
+
+      </div>
+
+      <div class="mb-4">
+
+        <label class="form-label">
+          Password
+        </label>
+
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Enter password"
+          formControlName="password">
+
+        <small
+          class="text-danger"
+          *ngIf="loginForm.controls.password.touched &&
+                 loginForm.controls.password.invalid">
+
+          Password is required.
+
+        </small>
+
+      </div>
+
+      <button
+        class="btn btn-primary w-100"
+        type="submit"
+        [disabled]="loading || loginForm.invalid">
+
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm me-2">
+        </span>
+
+        {{ loading ? 'Signing In...' : 'Sign In' }}
+
+      </button>
+
+    </form>
+
+    <!-- REGISTER -->
+    <form
+      *ngIf="!isLoginMode"
+      [formGroup]="registerForm"
+      (ngSubmit)="register()"
+      novalidate>
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Username
+        </label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Choose a username"
+          formControlName="username">
+
+        <small
+          class="text-danger"
+          *ngIf="registerForm.controls.username.touched">
+
+          <span *ngIf="registerForm.controls.username.hasError('required')">
+            Username is required.
+          </span>
+
+          <span *ngIf="registerForm.controls.username.hasError('minlength')">
+            Minimum 3 characters.
+          </span>
+
+        </small>
+
+      </div>
+
+      <div class="mb-3">
+
+        <label class="form-label">
+          Email
+        </label>
+
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Enter your email"
+          formControlName="email">
+
+        <small
+          class="text-danger"
+          *ngIf="registerForm.controls.email.touched">
+
+          <span *ngIf="registerForm.controls.email.hasError('required')">
+            Email is required.
+          </span>
+
+          <span *ngIf="registerForm.controls.email.hasError('email')">
+            Enter a valid email.
+          </span>
+
+        </small>
+
+      </div>
+
+      <div class="mb-4">
+
+        <label class="form-label">
+          Password
+        </label>
+
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Create a password"
+          formControlName="password">
+
+        <small
+          class="text-danger"
+          *ngIf="registerForm.controls.password.touched">
+
+          <span *ngIf="registerForm.controls.password.hasError('required')">
+            Password is required.
+          </span>
+
+          <span *ngIf="registerForm.controls.password.hasError('minlength')">
+            Minimum 8 characters.
+          </span>
+
+          <span *ngIf="registerForm.controls.password.hasError('pattern')">
+            Must contain uppercase, lowercase, number and special character.
+          </span>
+
+        </small>
+
+      </div>
+
+      <button
+        class="btn btn-primary w-100"
+        type="submit"
+        [disabled]="loading || registerForm.invalid">
+
+        <span
+          *ngIf="loading"
+          class="spinner-border spinner-border-sm me-2">
+        </span>
+
+        {{ loading ? 'Creating Account...' : 'Create Account' }}
+
+      </button>
+
+    </form>
+
+    <hr class="my-4">
+
+    <div class="text-center">
+
+      <span class="text-muted">
+
+        {{ isLoginMode
+        ? "Don't have an account?"
+        : "Already have an account?" }}
+
+      </span>
+
+      <button
+        type="button"
+        class="btn btn-link p-0 ms-2"
+        (click)="toggleMode()">
+
+        {{ isLoginMode ? 'Register' : 'Sign In' }}
+
+      </button>
+
+    </div>
+
+  </div>
+</div>

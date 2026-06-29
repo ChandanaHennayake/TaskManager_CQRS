@@ -1,0 +1,145 @@
+<div class="task-page">
+
+  <div class="task-page__header">
+
+    <div>
+
+      <h2 class="task-page__title">
+        Delete Task
+      </h2>
+
+      <p class="task-page__sub">
+        This action cannot be undone.
+      </p>
+
+    </div>
+
+    <a
+      routerLink="/tasks"
+      class="btn-back">
+
+      <i class="bi bi-arrow-left"></i>
+
+      Back to Tasks
+
+    </a>
+
+  </div>
+
+  @if (loading) {
+
+    <div class="loading-state">
+
+      <div
+        class="spinner-border text-danger"
+        role="status">
+      </div>
+
+      <p>
+        Loading task...
+      </p>
+
+    </div>
+
+  }
+
+  @if (!loading && task) {
+
+    <div class="delete-card">
+
+      <div class="warning-icon">
+
+        <i class="bi bi-exclamation-triangle-fill"></i>
+
+      </div>
+
+      <h3>
+
+        Delete this task?
+
+      </h3>
+
+      <p class="delete-message">
+
+        You're about to permanently delete this task.
+        This action cannot be undone.
+
+      </p>
+
+      <div class="task-info">
+
+        <div class="info-row">
+
+          <span class="info-label">
+
+            Title
+
+          </span>
+
+          <span class="info-value">
+
+            {{ task.title }}
+
+          </span>
+
+        </div>
+
+        <div class="info-row">
+
+          <span class="info-label">
+
+            Description
+
+          </span>
+
+          <span class="info-value">
+
+            {{ task.description }}
+
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button
+          type="button"
+          class="btn-delete"
+          [disabled]="loading"
+          (click)="deleteTask()">
+
+          @if (loading) {
+
+            <span
+              class="spinner-border spinner-border-sm">
+            </span>
+
+            Deleting...
+
+          } @else {
+
+            <i class="bi bi-trash"></i>
+
+            Delete Task
+
+          }
+
+        </button>
+
+        <a
+          routerLink="/tasks"
+          class="btn-cancel">
+
+          Cancel
+
+        </a>
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

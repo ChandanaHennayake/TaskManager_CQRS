@@ -1,0 +1,319 @@
+<div class="task-page">
+
+  <!-- Header -->
+  <div class="task-page__header">
+
+    <div>
+      <span class="page-badge">Task Dashboard</span>
+
+      <h2 class="task-page__title">
+        Manage Tasks
+      </h2>
+
+      <p class="task-page__sub">
+        Organize, track and manage your work efficiently.
+      </p>
+    </div>
+
+    <a
+      routerLink="/tasks/create"
+      class="btn-primary-action">
+
+      <i class="bi bi-plus-lg"></i>
+
+      New Task
+
+    </a>
+
+  </div>
+
+  <!-- Statistics -->
+
+  <div class="stats-row">
+
+    <div class="stat-card">
+
+      <div class="stat-card__icon total">
+        <i class="bi bi-list-task"></i>
+      </div>
+
+      <div>
+
+        <div class="stat-card__label">
+          Total Tasks
+        </div>
+
+        <div class="stat-card__value">
+          {{ tasks.length }}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="stat-card">
+
+      <div class="stat-card__icon todo">
+        <i class="bi bi-hourglass-split"></i>
+      </div>
+
+      <div>
+
+        <div class="stat-card__label">
+          Pending
+        </div>
+
+        <div class="stat-card__value">
+          {{ countByStatus(TaskStatus.Pending) }}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="stat-card">
+
+      <div class="stat-card__icon progress">
+        <i class="bi bi-arrow-repeat"></i>
+      </div>
+
+      <div>
+
+        <div class="stat-card__label">
+          In Progress
+        </div>
+
+        <div class="stat-card__value">
+          {{ countByStatus(TaskStatus.InProgress) }}
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="stat-card">
+
+      <div class="stat-card__icon done">
+        <i class="bi bi-check-circle"></i>
+      </div>
+
+      <div>
+
+        <div class="stat-card__label">
+          Completed
+        </div>
+
+        <div class="stat-card__value">
+          {{ countByStatus(TaskStatus.Completed) }}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Loading -->
+
+  @if (loading) {
+
+  <div class="loading-state">
+
+    <div class="spinner-border text-primary"></div>
+
+    <p>Loading tasks...</p>
+
+  </div>
+
+  }
+
+  <!-- Table -->
+
+  @if (!loading) {
+
+  <div class="table-card">
+
+    <div class="table-toolbar">
+
+      <div class="search-box">
+
+        <i class="bi bi-search"></i>
+
+        <input
+          type="text"
+          placeholder="Search by title or description..."
+          [(ngModel)]="searchQuery"
+          (ngModelChange)="applyFilter()">
+
+      </div>
+
+      <div class="toolbar-actions">
+
+        <select
+          [(ngModel)]="statusFilter"
+          (ngModelChange)="applyFilter()">
+
+          <option value="">
+            All Status
+          </option>
+
+          <option [value]="TaskStatus.Pending">
+            Pending
+          </option>
+
+          <option [value]="TaskStatus.InProgress">
+            In Progress
+          </option>
+
+          <option [value]="TaskStatus.Completed">
+            Completed
+          </option>
+
+        </select>
+
+        <button
+          type="button"
+          class="btn-reset"
+          (click)="clearFilters()">
+
+          <i class="bi bi-arrow-clockwise"></i>
+
+          Reset
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="table-responsive">
+
+      <table class="task-table">
+
+        <thead>
+
+          <tr>
+
+            <th>#</th>
+
+            <th>Title</th>
+
+            <th>Description</th>
+
+            <th>Status</th>
+
+            <th class="text-end">
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          @for(task of filteredTasks; track task.id){
+
+          <tr>
+
+            <td>{{task.id}}</td>
+
+            <td>
+
+              <strong>
+
+                {{task.title}}
+
+              </strong>
+
+            </td>
+
+            <td class="description">
+
+              {{task.description}}
+
+            </td>
+
+            <td>
+
+              <span
+                class="status-badge"
+                [ngClass]="getStatusClass(task.status)">
+
+                {{getStatusLabel(task.status)}}
+
+              </span>
+
+            </td>
+
+            <td class="text-end">
+
+              <a
+                class="icon-btn"
+                title="Edit"
+                [routerLink]="['/tasks/edit',task.id]">
+
+                <i class="bi bi-pencil"></i>
+
+              </a>
+
+              <a
+                class="icon-btn danger"
+                title="Delete"
+                [routerLink]="['/tasks/delete',task.id]">
+
+                <i class="bi bi-trash"></i>
+
+              </a>
+
+            </td>
+
+          </tr>
+
+          }
+
+          @empty{
+
+          <tr>
+
+            <td
+              colspan="5"
+              class="empty-state">
+
+              <i class="bi bi-clipboard2-x"></i>
+
+              <h5>
+                No Tasks Found
+              </h5>
+
+              <p>
+                Try changing your search or create your first task.
+              </p>
+
+              <a
+                routerLink="/tasks/create"
+                class="btn-primary-action">
+
+                <i class="bi bi-plus-lg"></i>
+
+                Create Task
+
+              </a>
+
+            </td>
+
+          </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+  }
+
+</div>

@@ -1,0 +1,247 @@
+<div class="task-page">
+
+  <div class="task-page__header">
+
+    <div>
+      <h2 class="task-page__title">
+        Edit Task
+      </h2>
+
+      <p class="task-page__sub">
+        Update the details of your task.
+      </p>
+    </div>
+
+    <a
+      routerLink="/tasks"
+      class="btn-back">
+
+      <i class="bi bi-arrow-left"></i>
+
+      Back to Tasks
+
+    </a>
+
+  </div>
+
+  @if (loading) {
+
+    <div class="loading-state">
+
+      <div
+        class="spinner-border text-primary"
+        role="status">
+      </div>
+
+      <p>
+        Loading task...
+      </p>
+
+    </div>
+
+  } @else {
+
+    <div class="form-card">
+
+      <form
+        [formGroup]="taskForm"
+        (ngSubmit)="onSubmit()">
+
+        <!-- Title -->
+
+        <div class="form-field">
+
+          <label class="form-field__label">
+            Title
+          </label>
+
+          <input
+            type="text"
+            maxlength="200"
+            placeholder="Enter task title"
+            class="form-field__input"
+            formControlName="title"
+            [class.form-field__input--error]="title.touched && title.invalid">
+
+          @if (title.touched && title.invalid) {
+
+            <div class="form-field__error">
+
+              @if (title.errors?.['required']) {
+
+                <span>
+
+                  <i class="bi bi-exclamation-circle"></i>
+
+                  Title is required.
+
+                </span>
+
+              }
+
+              @if (title.errors?.['maxlength']) {
+
+                <span>
+
+                  <i class="bi bi-exclamation-circle"></i>
+
+                  Maximum 200 characters allowed.
+
+                </span>
+
+              }
+
+            </div>
+
+          }
+
+          <div class="field-meta">
+
+            {{ title.value.length }}/200
+
+          </div>
+
+        </div>
+
+        <!-- Description -->
+
+        <div class="form-field">
+
+          <label class="form-field__label">
+
+            Description
+
+          </label>
+
+          <textarea
+            rows="5"
+            maxlength="1000"
+            placeholder="Enter task description"
+            class="form-field__input form-field__input--textarea"
+            formControlName="description"
+            [class.form-field__input--error]="description.touched && description.invalid">
+          </textarea>
+
+          @if (description.touched && description.invalid) {
+
+            <div class="form-field__error">
+
+              @if (description.errors?.['required']) {
+
+                <span>
+
+                  <i class="bi bi-exclamation-circle"></i>
+
+                  Description is required.
+
+                </span>
+
+              }
+
+              @if (description.errors?.['maxlength']) {
+
+                <span>
+
+                  <i class="bi bi-exclamation-circle"></i>
+
+                  Maximum 1000 characters allowed.
+
+                </span>
+
+              }
+
+            </div>
+
+          }
+
+          <div class="field-help">
+
+            Update the task description.
+
+          </div>
+
+          <div class="field-meta">
+
+            {{ description.value.length }}/1000
+
+          </div>
+
+        </div>
+
+        <!-- Status -->
+
+        <div class="form-field">
+
+          <label class="form-field__label">
+
+            Status
+
+          </label>
+
+          <div class="form-field__select-wrap">
+
+            <select
+  class="form-field__input form-field__input--select"
+  formControlName="status">
+
+  @for (status of statuses; track status.value) {
+
+    <option [ngValue]="status.value">
+      {{ status.label }}
+    </option>
+
+  }
+
+</select>
+
+            <i class="bi bi-chevron-down form-field__select-icon"></i>
+
+          </div>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="form-actions">
+
+          <button
+            type="submit"
+            class="btn-primary-action"
+            [disabled]="loading">
+
+            @if (loading) {
+
+              <span
+                class="spinner-border spinner-border-sm"
+                role="status">
+              </span>
+
+              Updating...
+
+            } @else {
+
+              <i class="bi bi-check-lg"></i>
+
+              Update Task
+
+            }
+
+          </button>
+
+          <a
+            routerLink="/tasks"
+            class="btn-cancel">
+
+            Cancel
+
+          </a>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  }
+
+</div>

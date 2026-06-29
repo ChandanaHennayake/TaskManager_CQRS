@@ -1,0 +1,166 @@
+// Colors
+
+$bg: #f8f7ff;
+$surface: #ffffff;
+$border: #e8e6f0;
+$border-md: #d4d1e8;
+
+$primary: #5b52e8;
+$primary-light: #eeecfd;
+$primary-text: #4038c7;
+
+$text: #1e1b3a;
+$text-secondary: #6b6a85;
+
+$danger: #e03e3e;
+$danger-bg: #fef2f2;
+$danger-border: #fecaca;
+
+// Navbar
+
+.navbar {
+  background: $surface;
+  border-bottom: 1px solid $border;
+}
+
+.nav-container {
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Brand
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+  background: $primary;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+.brand-name {
+  color: $text;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+// Actions
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+// User
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 5px 12px 5px 6px;
+
+  border-radius: 999px;
+
+  background: $primary-light;
+}
+
+.user-avatar {
+
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  background: $primary;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: .8rem;
+}
+
+.user-name {
+  color: $primary-text;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+// Logout
+
+.btn-logout {
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 14px;
+
+  border: 1px solid $border-md;
+  border-radius: 8px;
+
+  background: white;
+
+  color: $text-secondary;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+  &:hover {
+
+    color: $danger;
+    background: $danger-bg;
+    border-color: $danger-border;
+
+  }
+
+}
+
+// Main
+
+.app-main {
+  min-height: calc(100vh - 60px);
+  background: $bg;
+}
+
+// Responsive
+
+@media (max-width: 768px) {
+
+  .nav-container {
+    padding: 0 16px;
+    height: 64px;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .btn-logout span {
+    display: none;
+  }
+
+}

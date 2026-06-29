@@ -1,0 +1,522 @@
+// =============================================
+// Colors
+// =============================================
+
+$danger: #dc2626;
+$danger-hover: #b91c1c;
+$danger-light: #fef2f2;
+
+$primary: #5b52e8;
+
+$background: #f7f8fc;
+$surface: #ffffff;
+
+$text: #1f2937;
+$text-secondary: #6b7280;
+
+$border: #e5e7eb;
+
+// =============================================
+// Page
+// =============================================
+
+.task-page {
+
+  padding: 2rem;
+
+  animation: fadeIn .25s ease;
+
+}
+
+.task-page__header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 2rem;
+
+}
+
+.task-page__title {
+
+  margin: 0;
+
+  font-size: 2rem;
+
+  font-weight: 700;
+
+  color: $text;
+
+}
+
+.task-page__sub {
+
+  margin-top: .35rem;
+
+  color: $text-secondary;
+
+}
+
+// =============================================
+// Back Button
+// =============================================
+
+.btn-back {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 12px 18px;
+
+  border-radius: 12px;
+
+  border: 1px solid $border;
+
+  background: white;
+
+  color: $text;
+
+  text-decoration: none;
+
+  transition: .2s;
+
+}
+
+.btn-back:hover {
+
+  background: #f3f4f6;
+
+  color: $text;
+
+}
+
+// =============================================
+// Delete Card
+// =============================================
+
+.delete-card {
+
+  max-width: 760px;
+
+  margin: auto;
+
+  padding: 40px;
+
+  background: white;
+
+  border: 1px solid $border;
+
+  border-radius: 18px;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,.05);
+
+  text-align: center;
+
+}
+
+// =============================================
+// Warning Icon
+// =============================================
+
+.warning-icon {
+
+  width: 90px;
+
+  height: 90px;
+
+  margin: auto auto 24px;
+
+  border-radius: 50%;
+
+  background: $danger-light;
+
+  color: $danger;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  font-size: 2.5rem;
+
+}
+
+.delete-card h3 {
+
+  margin-bottom: 10px;
+
+  font-size: 1.7rem;
+
+  color: $text;
+
+}
+
+.delete-message {
+
+  color: $text-secondary;
+
+  margin-bottom: 32px;
+
+  line-height: 1.6;
+
+}
+
+// =============================================
+// Task Information
+// =============================================
+
+.task-info {
+
+  margin: 2rem 0;
+
+  border: 1px solid $border;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+
+  background: #fafafa;
+
+}
+
+.info-row {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  gap: 20px;
+
+  padding: 18px 20px;
+
+}
+
+.info-row:not(:last-child) {
+
+  border-bottom: 1px solid $border;
+
+}
+
+.info-label {
+
+  min-width: 110px;
+
+  font-size: .85rem;
+
+  font-weight: 600;
+
+  color: $text-secondary;
+
+}
+
+.info-value {
+
+  flex: 1;
+
+  text-align: right;
+
+  color: $text;
+
+  font-size: .95rem;
+
+  line-height: 1.6;
+
+  word-break: break-word;
+
+}
+
+// =============================================
+// Buttons
+// =============================================
+
+.form-actions {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 2rem;
+
+}
+
+.btn-delete {
+
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 170px;
+
+  height: 48px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: $danger;
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+}
+
+.btn-delete:hover:not(:disabled) {
+
+  background: $danger-hover;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba($danger,.25);
+
+}
+
+.btn-delete:disabled {
+
+  opacity: .7;
+
+  cursor: not-allowed;
+
+}
+
+.btn-cancel {
+
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  height: 48px;
+
+  padding: 0 22px;
+
+  border: 1px solid $border;
+
+  border-radius: 12px;
+
+  background: white;
+
+  color: $text;
+
+  text-decoration: none;
+
+  transition: .2s;
+
+}
+
+.btn-cancel:hover {
+
+  background: #f3f4f6;
+
+  color: $text;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+
+}
+
+// =============================================
+// Loading
+// =============================================
+
+.loading-state {
+
+  max-width: 760px;
+
+  margin: auto;
+
+  padding: 80px 20px;
+
+  background: white;
+
+  border: 1px solid $border;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,.04);
+
+}
+
+.loading-state .spinner-border {
+
+  width: 2.5rem;
+
+  height: 2.5rem;
+
+}
+
+.loading-state p {
+
+  margin-top: 18px;
+
+  margin-bottom: 0;
+
+  color: $text-secondary;
+
+}
+
+.spinner-border-sm {
+
+  width: 1rem;
+
+  height: 1rem;
+
+  border-width: 2px;
+
+}
+
+// =============================================
+// Animation
+// =============================================
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+
+    transform: translateY(18px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+// =============================================
+// Responsive
+// =============================================
+
+@media (max-width: 992px) {
+
+  .task-page {
+
+    padding: 1.5rem;
+
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .task-page {
+
+    padding: 1rem;
+
+  }
+
+  .task-page__header {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+  }
+
+  .task-page__title {
+
+    font-size: 1.6rem;
+
+  }
+
+  .delete-card {
+
+    padding: 24px;
+
+  }
+
+  .info-row {
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+  }
+
+  .info-value {
+
+    text-align: left;
+
+  }
+
+  .form-actions {
+
+    flex-direction: column-reverse;
+
+    align-items: stretch;
+
+  }
+
+  .btn-delete,
+  .btn-cancel {
+
+    width: 100%;
+
+  }
+
+}
+
+@media (max-width: 576px) {
+
+  .delete-card {
+
+    padding: 20px;
+
+    border-radius: 14px;
+
+  }
+
+  .warning-icon {
+
+    width: 72px;
+
+    height: 72px;
+
+    font-size: 2rem;
+
+  }
+
+  .delete-card h3 {
+
+    font-size: 1.4rem;
+
+  }
+
+  .delete-message {
+
+    font-size: .9rem;
+
+  }
+
+}
